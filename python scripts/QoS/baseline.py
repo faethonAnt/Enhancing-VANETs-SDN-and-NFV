@@ -52,8 +52,14 @@ def topology():
     rsu6 = net.addAccessPoint('rsu6', ssid='vanet', mode='g', channel='1',
                               position='400,-300,0', range=170,
                               failMode='standalone')
+    rsu7 = net.addAccessPoint('rsu7', ssid='vanet', mode='g', channel='1',
+                              position='450,-100,0', range=170,
+                              failMode='standalone')
+    rsu8 = net.addAccessPoint('rsu8', ssid='vanet', mode='g', channel='1',
+                              position='-50,-100,0', range=170,
+                              failMode='standalone')
 
-    aps = [rsu1, rsu2, rsu3, rsu4, rsu5, rsu6]
+    aps = [rsu1, rsu2, rsu3, rsu4, rsu5, rsu6, rsu7, rsu8]
 
     info("*** Creating backhaul with FORCED bottleneck\n")
     srv = net.addHost('srv', ip='10.0.0.254/24')
