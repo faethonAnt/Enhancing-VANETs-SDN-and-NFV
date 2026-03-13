@@ -52,8 +52,14 @@ def topology():
     rsu6 = net.addAccessPoint('rsu6', ssid='vanet', mode='g', channel='1',
                               position='400,-300,0', range=170,
                               failMode='standalone')
+    rsu7 = net.addAccessPoint('rsu7', ssid='vanet', mode='g', channel='1',
+                              position='450,-100,0', range=170,
+                              failMode='standalone')
+    rsu8 = net.addAccessPoint('rsu8', ssid='vanet', mode='g', channel='1',
+                              position='-50,-100,0', range=170,
+                              failMode='standalone')
 
-    aps = [rsu1, rsu2, rsu3, rsu4, rsu5, rsu6]
+    aps = [rsu1, rsu2, rsu3, rsu4, rsu5, rsu6, rsu7, rsu8]
 
     info("*** Creating backhaul (SDN switches + server)\n")
     srv = net.addHost('srv', ip='10.0.0.254/24')
@@ -77,7 +83,7 @@ def topology():
 
     info("*** Adding bottleneck link agg1 <-> agg2 (same as baseline)\n")
     net.addLink(agg1, agg2,
-                bw=5, delay='50ms', loss=2,
+                bw=2, delay='50ms', loss=2,
                 max_queue_size=50, use_htb=True)
 
     info("*** Adding good links to core\n")
@@ -144,4 +150,5 @@ def topology():
 
 
 if __name__ == '__main__':
+
     setLogLevel('info')
